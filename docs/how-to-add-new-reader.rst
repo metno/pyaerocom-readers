@@ -40,7 +40,7 @@ and it must implement the following methods:
 
 The ``YourReader`` should extend :py:class:`~pyaro.timeseries.AutoFilterReaderEngine.AutoFilterReader`
 
-- the ``__init__`` method of :py:class:`~pyaro.timeseries.Reader` with two fixed args (`self` and `filename_or_obj_or_url`) and several kwargs,
+- the ``__init__`` method of :py:class:`~pyaro.timeseries.Reader` with one fixed arg (`self`) and several kwargs,
   one of them should be `filters`
     - it must store the `filters` calling `self._set_filters(filters)`
 - the :py:meth:`~pyaro.timeseries.AutoFilterReaderEngine.AutoFilterReader._unfiltered_data` method
@@ -83,7 +83,7 @@ This is what a ``TimeseriesReader`` subclass should look like:
     class MyTimeseriesReader(Reader):
         def __init__(
             self,
-            filename_or_obj_or_url,
+            filename,
             *,
             filters=[],
             # other backend specific keyword arguments
@@ -102,11 +102,11 @@ This is what a ``TimeseriesReader`` subclass should look like:
             ...
 
     class MyTimeseriesEngine(Engine)
-        def open(self, filename_or_obj_or_url, *args, **kwargs):
-            return MyTimeseriesReader(filename_or_obj_or_url, *args, **kwargs)
+        def open(self, *args, **kwargs):
+            return MyTimeseriesReader(*args, **kwargs)
 
         def args(self):
-            open_parameters = ["filename_or_obj", "filters"]
+            open_parameters = ["filename", "filters"]
             return open_parameters
 
         def supported_filters(self):

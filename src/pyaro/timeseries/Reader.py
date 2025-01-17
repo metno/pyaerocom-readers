@@ -8,13 +8,12 @@ class Reader(abc.ABC):
     """Baseclass for timeseries. This can be used with a context manager"""
 
     @abc.abstractmethod
-    def __init__(self, filename_or_obj_or_url, *, filters=None):
+    def __init__(self, *, filters=None):
         """Initialize the reader.
 
         This function is usually called from the Engine's open function.
         All parameters should also be listed in the Engine's args function.
 
-        :param filename_or_obj_or_url: location of database instance
         :param filters: list of filters, or dict of (name, kwargs) for FilterFactory
         """
         pass

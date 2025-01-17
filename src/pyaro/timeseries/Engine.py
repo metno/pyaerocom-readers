@@ -5,7 +5,7 @@ class Engine(abc.ABC):
     """The engine is the 'singleton' generator object for databases of the engines type."""
 
     @abc.abstractmethod
-    def open(self, filename_or_obj_or_url, *, filters=None):
+    def open(self, *, filters=None):
         """open-function of the timeseries, initializing the reader-object, i.e.
         equivalent to Reader(filename_or_object_or_url, *, filters)
 
@@ -17,10 +17,9 @@ class Engine(abc.ABC):
     @property
     @abc.abstractmethod
     def args(self) -> list[str]:
-        """return a tuple of parameters to be passed to open_timeseries, including
-        the mandatory filename_or_obj_or_url parameter.
+        """return a tuple of parameters to be passed to open_timeseries
         """
-        return ["filename_or_obj_or_url"]
+        return []
 
     @property
     @abc.abstractmethod

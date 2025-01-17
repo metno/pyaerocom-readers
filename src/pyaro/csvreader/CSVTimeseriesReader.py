@@ -58,11 +58,11 @@ class CSVTimeseriesReader(pyaro.timeseries.AutoFilterReaderEngine.AutoFilterRead
     ):
         """open a new csv timeseries-reader
 
-        :param filename_or_obj_or_url: path-like object to csv-file. For multi-file support
+        :param filename: path-like object to csv-file. For multi-file support
             path may also start with the `glob:`-keyword, e.g. `glob:/data/csvdir/**/*.csv` will
             add all csv-files under `/data/csvdir/`, recursively.
             All multi-files need to have the same csv-format.
-            If filename_or_obj_or_url is a directory, all *.csv file in this directory will be read,
+            If filename is a directory, all *.csv file in this directory will be read,
             i.e. it is mapped to glob:/directory/*.csv
         :param columns: mapping of column in the csv-file to key, see col_keys().
             Column-numbering starts with 0.
